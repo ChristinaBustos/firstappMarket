@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-    @Modifying
     @Query(value = "UPDATE categories SET status = :status WHERE id = :id", nativeQuery = true)
+    @Modifying
     int updateStatusById(
             @Param("status") Boolean status,
             @Param("id")Long id);
